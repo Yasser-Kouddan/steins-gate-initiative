@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Operation STEINER-GATE
 
 Initial monorepo scaffold for Operation STEINER-GATE.
@@ -45,3 +46,6 @@ git commit -m "chore: initialize NX monorepo scaffold"
 Notes:
 - I attempted to run `git init` in the environment but `git` is not available here; please run the commands above on your machine.
 - Next I can scaffold minimal project files here (package.json, nx.json, tsconfig) so you can run `npm install` locally to finish setup—tell me if you want me to proceed.
+=======
+# steins-gate-initiative
+>>>>>>> d218454d44af751d045c5c43930ab881d217bed1
