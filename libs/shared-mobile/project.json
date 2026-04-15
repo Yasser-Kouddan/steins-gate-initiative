@@ -1,0 +1,13 @@
+{
+  "root": "libs/shared-mobile",
+  "sourceRoot": "libs/shared-mobile/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [{ "command": "echo Building shared-mobile (no-op)" }]
+      }
+    }
+  }
+}

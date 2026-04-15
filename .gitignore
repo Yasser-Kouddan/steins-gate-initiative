@@ -1,0 +1,36 @@
+# Node
+node_modules/
+dist/
+build/
+.cache/
+.env
+.env.local
+npm-debug.log
+yarn-error.log
+package-lock.json
+pnpm-lock.yaml
+
+# Expo
+.expo/
+.expo-shared/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# coverage
+coverage/
+
+# Firebase
+.firebase/
+
+# logs
+logs/
+*.log
+
+
+
+.nx/cache
+.nx/workspace-data

@@ -1,0 +1,29 @@
+{
+  "root": "apps/reading-steiner",
+  "sourceRoot": "apps/reading-steiner",
+  "projectType": "application",
+  "targets": {
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [{ "command": "expo start" }],
+        "cwd": "apps/reading-steiner",
+        "parallel": false
+      }
+    },
+    "start:web": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [{ "command": "expo start --web" }],
+        "cwd": "apps/reading-steiner"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [{ "command": "expo build:web" }],
+        "cwd": "apps/reading-steiner"
+      }
+    }
+  }
+}

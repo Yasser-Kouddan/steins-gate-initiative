@@ -1,0 +1,22 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "lib": ["ES2022", "DOM"],
+    "declaration": false,
+    "moduleResolution": "NodeNext",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@steins-gate/shared-types": ["libs/shared-types/src/index.ts"],
+      "@shared-mobile": ["libs/shared-mobile/src/index.ts"],
+      "@shared-mobile/*": ["libs/shared-mobile/src/*"]
+    }
+  }
+}

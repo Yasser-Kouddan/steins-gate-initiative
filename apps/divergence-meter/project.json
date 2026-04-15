@@ -1,0 +1,24 @@
+{
+  "root": "apps/divergence-meter",
+  "sourceRoot": "apps/divergence-meter/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [{ "command": "tsc -p apps/divergence-meter/tsconfig.json" }],
+        "cwd": "."
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          { "command": "npx ts-node-dev --respawn --transpile-only --project apps/divergence-meter/tsconfig.json --ignore-watch node_modules apps/divergence-meter/src/main.ts" }
+        ],
+        "cwd": ".",
+        "parallel": false
+      }
+    }
+  }
+}

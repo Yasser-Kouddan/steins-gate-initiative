@@ -1,0 +1,24 @@
+{
+  "name": "steins-gate-initative",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "nx": "nx",
+    "install:expo": "npm --prefix apps/reading-steiner install",
+    "install:nest": "npm --prefix apps/divergence-meter install",
+    "install:apps": "npm --prefix apps/reading-steiner install && npm --prefix apps/divergence-meter install",
+    "start:expo": "cd apps/reading-steiner && npx expo start --port 19001",
+    "start:expo:web": "cd apps/reading-steiner && npx expo start --web --port 19001",
+    "start:nest": "npx ts-node-dev --respawn --transpile-only --project apps/divergence-meter/tsconfig.json --ignore-watch node_modules apps/divergence-meter/src/main.ts",
+    "build:nest": "nx run divergence-meter:build",
+    "build:expo:web": "nx run reading-steiner:build",
+    "lint": "nx lint",
+    "format": "nx format:write"
+  },
+  "devDependencies": {
+    "nx": "22.6.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {}
+}

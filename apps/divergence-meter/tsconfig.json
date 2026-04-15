@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../../dist/apps/divergence-meter",
+    "rootDir": "src",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "target": "ES2022",
+    "types": ["node"]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
