@@ -32,8 +32,8 @@ module.exports = async function (env, argv) {
     new webpack.ContextReplacementPlugin(
       /[\\/]app[\\/]?$/,
       appRoot,
-      // Webpack ContextReplacementPlugin constructor supports:
-      // (resourceRegExp, newContentResource, newContentRecursive, newContentRegExp)
+      // Match app contexts, rewrite to canonical appRoot, recurse subdirs,
+      // and only include router route modules (.js/.jsx/.ts/.tsx).
       true,
       /^\.\/.*\.[jt]sx?$/
     )
