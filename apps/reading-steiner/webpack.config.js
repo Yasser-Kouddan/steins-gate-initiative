@@ -28,6 +28,14 @@ module.exports = async function (env, argv) {
       'process.env.EXPO_ROUTER_APP_ROOT': JSON.stringify(appRoot),
     })
   );
+  config.plugins.push(
+    new webpack.ContextReplacementPlugin(
+      /[\\/]app$/,
+      appRoot,
+      true,
+      /^\.\/.*\.[jt]sx?$/
+    )
+  );
 
   // Prevent the same file being included twice via symlink/real paths
   config.resolve = config.resolve || {};
