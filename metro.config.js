@@ -28,6 +28,12 @@ config.watchFolders.push(path.resolve(workspaceRoot, 'libs'));
 config.watchFolders.push(path.resolve(workspaceRoot, 'apps'));
 
 // Ensure node modules resolution uses workspace root
-config.resolver.nodeModulesPaths = [path.resolve(workspaceRoot, 'node_modules')];
+// Better: don't force it at all (Metro default logic is usually correct)
+// delete config.resolver.nodeModulesPaths;
 
+// If you must set it, include per-app node_modules too (but this is tricky from root)
+config.resolver.nodeModulesPaths = [
+  path.resolve(workspaceRoot, 'apps/reading-steiner/node_modules'),
+  path.resolve(workspaceRoot, 'node_modules'),
+];
 module.exports = config;

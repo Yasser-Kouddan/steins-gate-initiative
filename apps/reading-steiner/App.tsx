@@ -1,3 +1,2 @@
-// Re-export the expo-router entry for Expo and web builds
-// `expo-router/entry` exports a named `App` (not a default). Export it as default to satisfy bundlers.
-export { App as default } from 'expo-router/entry';
+// This file is kept for compatibility. Entry is handled by expo-router/entry via package.json main.
+import 'expo-router/entry';
