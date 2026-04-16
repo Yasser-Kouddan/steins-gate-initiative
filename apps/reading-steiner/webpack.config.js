@@ -32,7 +32,8 @@ module.exports = async function (env, argv) {
     new webpack.ContextReplacementPlugin(
       /[\\/]app[\\/]?$/,
       appRoot,
-      // Webpack supports this signature: (resourceRegExp, newContentResource, newContentRecursive, newContentRegExp)
+      // Webpack ContextReplacementPlugin constructor supports:
+      // (resourceRegExp, newContentResource, newContentRecursive, newContentRegExp)
       true,
       /^\.\/.*\.[jt]sx?$/
     )
