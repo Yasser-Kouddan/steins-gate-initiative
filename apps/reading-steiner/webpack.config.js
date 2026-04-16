@@ -32,7 +32,7 @@ module.exports = async function (env, argv) {
     new webpack.ContextReplacementPlugin(
       /[\\/]app[\\/]?$/,
       appRoot,
-      // recurseSubdirectories=true, and only include route-like JS/TS modules.
+      // Webpack supports this signature: (resourceRegExp, newContentResource, newContentRecursive, newContentRegExp)
       true,
       /^\.\/.*\.[jt]sx?$/
     )
