@@ -30,7 +30,7 @@ module.exports = async function (env, argv) {
   );
   config.plugins.push(
     new webpack.ContextReplacementPlugin(
-      /[\\/]app$/,
+      /[\\/]app[\\/]?$/,
       appRoot,
       // recurseSubdirectories=true, and only include route-like JS/TS modules.
       true,
