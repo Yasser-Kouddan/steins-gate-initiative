@@ -5,10 +5,19 @@ const webpack = require('webpack');
 
 module.exports = async function (env, argv) {
   const projectRoot = __dirname;
-  const appRoot = path.join(projectRoot, 'app');
+  const appRoot = path.resolve(projectRoot, 'app');
+  const appNodeModules = path.resolve(projectRoot, 'node_modules');
+  const workspaceNodeModules = path.resolve(projectRoot, '../../node_modules');
+
+  // In Nx monorepos, ensure router context generation is anchored to the app.
+  process.env.EXPO_ROUTER_APP_ROOT = appRoot;
 
   const config = await createExpoWebpackConfigAsync(
-    { ...env, projectRoot }, // important: force projectRoot
+    {
+      ...env,
+      projectRoot, // force app-local project root
+      EXPO_ROUTER_APP_ROOT: appRoot,
+    },
     argv
   );
 
@@ -19,6 +28,16 @@ module.exports = async function (env, argv) {
       'process.env.EXPO_ROUTER_APP_ROOT': JSON.stringify(appRoot),
     })
   );
+  config.plugins.push(
+    new webpack.ContextReplacementPlugin(
+      /[\\/]app[\\/]?$/,
+      appRoot,
+      // Match app contexts, rewrite to canonical appRoot, recurse subdirs,
+      // and only include router route modules (.js/.jsx/.ts/.tsx).
+      true,
+      /^\.\/.*\.[jt]sx?$/
+    )
+  );
 
   // Prevent the same file being included twice via symlink/real paths
   config.resolve = config.resolve || {};
@@ -27,11 +46,18 @@ module.exports = async function (env, argv) {
   // In a "no-hoist / per-project node_modules" repo, force webpack to resolve
   // deps from THIS app first, otherwise you can accidentally pull a second copy.
   config.resolve.modules = [
-    path.join(projectRoot, 'node_modules'),
+    appNodeModules,
+    workspaceNodeModules,
+    'node_modules',
+  ];
+  config.resolveLoader = config.resolveLoader || {};
+  config.resolveLoader.modules = [
+    appNodeModules,
+    workspaceNodeModules,
     'node_modules',
   ];
 
-  // Optional but helpful: ensure webpack "context" is the app, not the monorepo root
+  // Keep webpack context app-local to avoid alternate route roots from workspace cwd.
   config.context = projectRoot;
 
   return config;

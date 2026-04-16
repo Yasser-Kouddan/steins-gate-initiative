@@ -27,13 +27,7 @@ config.watchFolders = config.watchFolders || [];
 config.watchFolders.push(path.resolve(workspaceRoot, 'libs'));
 config.watchFolders.push(path.resolve(workspaceRoot, 'apps'));
 
-// Ensure node modules resolution uses workspace root
-// Better: don't force it at all (Metro default logic is usually correct)
-// delete config.resolver.nodeModulesPaths;
-
-// If you must set it, include per-app node_modules too (but this is tricky from root)
-config.resolver.nodeModulesPaths = [
-  path.resolve(workspaceRoot, 'apps/reading-steiner/node_modules'),
-  path.resolve(workspaceRoot, 'node_modules'),
-];
+// Do not force global nodeModulesPaths from the workspace root.
+// Each app (e.g. apps/reading-steiner) owns its own metro.config.js with
+// app-local resolution, and overriding it here can create duplicate graphs.
 module.exports = config;
