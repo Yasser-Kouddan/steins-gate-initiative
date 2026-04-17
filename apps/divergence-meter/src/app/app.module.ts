@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
-import { HttpModule } from '@nestjs/axios';
+import { NewsScraperModule } from '../news-scraper/news-scraper.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { NewsScraperModule } from './news-scraper/news-scraper.module';
 
 @Module({
   imports: [NewsScraperModule],
