@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "new-reading-steiner",
-    "slug": "new-reading-steiner",
+    "name": "reading-steiner",
+    "slug": "reading-steiner",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

@@ -1,5 +1,5 @@
 {
-  "name": "new-reading-steiner",
+  "name": "reading-steiner",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
